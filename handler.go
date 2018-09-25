@@ -1,7 +1,7 @@
 package main
 
 import (
-	verfv1 "github.com/olegchorny/chaos-operator/tree/master/pkg/apis/chaos/v1"
+	verfv1 "github.com/olegchorny/chaos-operator/pkg/apis/chaos/v1"
 
 	log "github.com/Sirupsen/logrus"
 )
