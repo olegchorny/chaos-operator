@@ -133,21 +133,26 @@ func (c *Controller) processNextItem() bool {
 
 	} else {
 		c.logger.Infof("Controller.processNextItem: object created detected: %s", keyRaw)
-		message := c.handler.ObjectCreated(item)
-		id, _ := c.croner.AddFunc("0 * * * * *", func() {
+		namespace, schedule := c.handler.ObjectCreated(item)
 
-			pods, _ := c.clientset.CoreV1().Pods(message).List(metav1.ListOptions{})
+		// TO DO: Check if namespace exists
+
+		// TO DO: default schedule: "0 * * * * *"
+
+		id, _ := c.croner.AddFunc(schedule, func() {
+
+			pods, _ := c.clientset.CoreV1().Pods(namespace).List(metav1.ListOptions{})
 			p := rand.Int() % len(pods.Items)
-			err = c.clientset.CoreV1().Pods(message).Delete(pods.Items[p].Name, nil)
+			err = c.clientset.CoreV1().Pods(namespace).Delete(pods.Items[p].Name, nil)
 
 			if err != nil {
 				log.WithFields(log.Fields{
-					"namespace": message,
+					"namespace": namespace,
 					"pod":       pods.Items[p].Name,
 				}).Fatal("Error deleting pod")
 			} else {
 				log.WithFields(log.Fields{
-					"namespace": message,
+					"namespace": namespace,
 					"pod":       pods.Items[p].Name,
 				}).Info("Pod deleted")
 			}

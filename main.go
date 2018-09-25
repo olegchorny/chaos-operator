@@ -118,7 +118,7 @@ func main() {
 		clientset: client,
 		informer:  informer,
 		queue:     queue,
-		handler:   &TestHandler{},
+		handler:   &ChaosHandler{},
 		croner:    cr,
 		jober:     jobs,
 	}

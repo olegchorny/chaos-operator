@@ -30,7 +30,8 @@ type ChaosSpec struct {
 	// Message and SomeValue are example custom spec fields
 	//
 	// this is where you would put your custom resource data
-	Namespace   string `json:"namespace"`
+	Namespace string `json:"namespace"`
+	Schedule  string `json:"schedule"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
