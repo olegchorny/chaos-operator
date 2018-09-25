@@ -1,7 +1,7 @@
 package v1
 
 import (
-	chaos "chaos-operator/pkg/apis/chaos"
+	chaos "github.com/olegchorny/chaos-operator/pkg/apis/chaos"
 
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"

@@ -19,10 +19,10 @@ limitations under the License.
 package v1
 
 import (
-	chaos_v1 "chaos-operator/pkg/apis/chaos/v1"
-	versioned "chaos-operator/pkg/client/clientset/versioned"
-	internalinterfaces "chaos-operator/pkg/client/informers/externalversions/internalinterfaces"
-	v1 "chaos-operator/pkg/client/listers/chaos/v1"
+	chaos_v1 "github.com/olegchorny/chaos-operator/pkg/apis/chaos/v1"
+	versioned "github.com/olegchorny/chaos-operator/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/olegchorny/chaos-operator/pkg/client/informers/externalversions/internalinterfaces"
+	v1 "github.com/olegchorny/chaos-operator/pkg/client/listers/chaos/v1"
 	time "time"
 
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"

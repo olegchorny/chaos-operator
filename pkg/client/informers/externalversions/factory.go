@@ -19,9 +19,9 @@ limitations under the License.
 package externalversions
 
 import (
-	versioned "operator/pkg/client/clientset/versioned"
-	chaos "operator/pkg/client/informers/externalversions/chaos"
-	internalinterfaces "operator/pkg/client/informers/externalversions/internalinterfaces"
+	versioned "github.com/olegchorny/chaos-operator/pkg/client/clientset/versioned"
+	chaos "github.com/olegchorny/chaos-operatorr/pkg/client/informers/externalversions/chaos"
+	internalinterfaces "github.com/olegchorny/chaos-operator/pkg/client/informers/externalversions/internalinterfaces"
 	reflect "reflect"
 	sync "sync"
 	time "time"

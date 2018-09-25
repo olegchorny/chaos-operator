@@ -19,7 +19,7 @@ limitations under the License.
 package verf
 
 import (
-	v1 "operator/pkg/client/informers/externalversions/chaos/v1"
+	v1 "github.com/olegchorny/chaos-operator/pkg/client/informers/externalversions/chaos/v1"
 	internalinterfaces "operator/pkg/client/informers/externalversions/internalinterfaces"
 )
 

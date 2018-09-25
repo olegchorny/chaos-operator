@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	chaos_v1 "operator/pkg/apis/chaos/v1"
+	chaos_v1 "github.com/olegchorny/chaos-operator/pkg/apis/chaos/v1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"

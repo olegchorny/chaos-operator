@@ -19,7 +19,7 @@ limitations under the License.
 package v1
 
 import (
-	internalinterfaces "chaos-operator/pkg/client/informers/externalversions/internalinterfaces"
+	internalinterfaces "github.com/olegchorny/chaos-operator/pkg/client/informers/externalversions/internalinterfaces"
 )
 
 // Interface provides access to all the informers in this group version.

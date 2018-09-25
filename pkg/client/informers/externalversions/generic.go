@@ -20,7 +20,7 @@ package externalversions
 
 import (
 	"fmt"
-	v1 "operator/pkg/apis/chaos/v1"
+	v1 "github.com/olegchorny/chaos-operator/pkg/apis/chaos/v1"
 
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
