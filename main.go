@@ -13,8 +13,11 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/client-go/util/workqueue"
 
-	myresourceclientset "chaos-operator/pkg/client/clientset/versioned"
-	myresourceinformer_v1 "chaos-operator/pkg/client/informers/externalversions/chaos/v1"
+	// myresourceclientset "chaos-operator/pkg/client/clientset/versioned"
+	// myresourceinformer_v1 "chaos-operator/pkg/client/informers/externalversions/chaos/v1"
+
+	myresourceclientset "github.com/olegchorny/chaos-operator/pkg/client/clientset/versioned"
+	myresourceinformer_v1 "github.com/olegchorny/chaos-operator/pkg/client/informers/externalversions/chaos/v1"
 )
 
 // retrieve the Kubernetes cluster client from outside of the cluster
