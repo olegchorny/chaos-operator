@@ -19,9 +19,10 @@ limitations under the License.
 package fake
 
 import (
-	clientset "operator/pkg/client/clientset/versioned"
-	verfv1 "operator/pkg/client/clientset/versioned/typed/chaos/v1"
-	fakeverfv1 "operator/pkg/client/clientset/versioned/typed/chaos/v1/fake"
+	clientset "github.com/olegchorny/chaos-operator/pkg/client/clientset/versioned"
+	fakeverfv1 "github.com/olegchorny/chaos-operator/pkg/client/clientset/versioned/typed/chaos/v1/fake"
+
+	verfv1 "github.com/olegchorny/chaos-operator/pkg/apis/chaos/v1"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"

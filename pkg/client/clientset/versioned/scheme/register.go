@@ -19,7 +19,7 @@ limitations under the License.
 package scheme
 
 import (
-	verfv1 "chaos-operator/pkg/apis/chaos/v1"
+	verfv1 "github.com/olegchorny/chaos-operator/pkg/apis/chaos/v1"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"

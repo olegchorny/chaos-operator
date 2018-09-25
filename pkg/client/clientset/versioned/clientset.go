@@ -19,7 +19,7 @@ limitations under the License.
 package versioned
 
 import (
-	verfv1 "chaos-operator/pkg/client/clientset/versioned/typed/chaos/v1"
+	verfv1 "github.com/olegchorny/chaos-operator/pkg/client/clientset/versioned/typed/chaos/v1"
 
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
