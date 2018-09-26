@@ -86,7 +86,7 @@ func main() {
 			// convert the resource object into a key (in this case
 			// we are just doing it in the format of 'namespace/name')
 			key, err := cache.MetaNamespaceKeyFunc(obj)
-			log.Infof("Add myresource: %s", key)
+			log.Infof("Add chaos: %s", key)
 			if err == nil {
 				// add the key to the queue for the handler to get
 				queue.Add(key)
@@ -94,7 +94,7 @@ func main() {
 		},
 		UpdateFunc: func(oldObj, newObj interface{}) {
 			key, err := cache.MetaNamespaceKeyFunc(newObj)
-			log.Infof("Update myresource: %s", key)
+			log.Infof("Update chaos: %s", key)
 			if err == nil {
 				queue.Add(key)
 			}
@@ -106,7 +106,7 @@ func main() {
 			//
 			// this then in turn calls MetaNamespaceKeyFunc
 			key, err := cache.DeletionHandlingMetaNamespaceKeyFunc(obj)
-			log.Infof("Delete myresource: %s", key)
+			log.Infof("Delete chaos: %s", key)
 			if err == nil {
 				queue.Add(key)
 			}

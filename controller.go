@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"os/exec"
 	"time"
 
 	log "github.com/Sirupsen/logrus"
@@ -139,28 +140,42 @@ func (c *Controller) processNextItem() bool {
 
 		// TO DO: default schedule: "0 * * * * *"
 
-		id, _ := c.croner.AddFunc(schedule, func() {
+		switch namespace {
+		//Restart node
+		case "nodes":
+			id, _ := c.croner.AddFunc(schedule, func() {
+				cmd := exec.Command("/bin/systemctl", "reboot")
+				c.logger.Infof("Running restart node command ...")
+				err := cmd.Run()
+				c.logger.Infof("Command finished with error: %v", err)
+			})
 
-			pods, _ := c.clientset.CoreV1().Pods(namespace).List(metav1.ListOptions{})
-			p := rand.Int() % len(pods.Items)
-			err = c.clientset.CoreV1().Pods(namespace).Delete(pods.Items[p].Name, nil)
+			c.jober[keyRaw] = id
+			c.queue.Forget(key)
+		// Delete pod in the given namespace
+		default:
+			id, _ := c.croner.AddFunc(schedule, func() {
 
-			if err != nil {
-				log.WithFields(log.Fields{
-					"namespace": namespace,
-					"pod":       pods.Items[p].Name,
-				}).Fatal("Error deleting pod")
-			} else {
-				log.WithFields(log.Fields{
-					"namespace": namespace,
-					"pod":       pods.Items[p].Name,
-				}).Info("Pod deleted")
-			}
-		})
+				pods, _ := c.clientset.CoreV1().Pods(namespace).List(metav1.ListOptions{})
+				p := rand.Int() % len(pods.Items)
+				err = c.clientset.CoreV1().Pods(namespace).Delete(pods.Items[p].Name, nil)
 
-		c.jober[keyRaw] = id
+				if err != nil {
+					log.WithFields(log.Fields{
+						"namespace": namespace,
+						"pod":       pods.Items[p].Name,
+					}).Fatal("Error deleting pod")
+				} else {
+					log.WithFields(log.Fields{
+						"namespace": namespace,
+						"pod":       pods.Items[p].Name,
+					}).Info("Pod deleted")
+				}
+			})
 
-		c.queue.Forget(key)
+			c.jober[keyRaw] = id
+			c.queue.Forget(key)
+		}
 	}
 
 	return true
