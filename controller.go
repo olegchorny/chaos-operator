@@ -144,8 +144,8 @@ func (c *Controller) processNextItem() bool {
 		//Restart node
 		case "nodes":
 			id, _ := c.croner.AddFunc(schedule, func() {
-				//cmd := exec.Command("/bin/systemctl", "reboot")
-				cmd := exec.Command("/sbin/shutdown", "-r", "now")
+				cmd := exec.Command("/bin/systemctl", "reboot")
+
 				c.logger.Infof("Running restart node command ...")
 				err := cmd.Run()
 				c.logger.Infof("Command finished with error: %v", err)

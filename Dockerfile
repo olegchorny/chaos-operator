@@ -1,4 +1,4 @@
-FROM golang:1.10
+FROM golang:1.10 as builder
 
 RUN mkdir -p /go/src/chaos-operator
 ADD . /go/src/chaos-operator
@@ -30,4 +30,14 @@ RUN go build .
 
 ##CMD ["./chaos-operator"]  
 
-CMD ["/go/src/chaos-operator/chaos-operator"]
+FROM ubuntu:16.04
+RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/cache/apt
+# NB: you may need to update RBAC permissions when upgrading kubectl - see kured-rbac.yaml for details
+#ADD https://storage.googleapis.com/kubernetes-release/release/v1.10.3/bin/linux/amd64/kubectl /usr/bin/kubectl
+#RUN chmod 0755 /usr/bin/kubectl
+##WORKDIR /root/
+COPY --from=builder /go/src/chaos-operator/chaos-operator /usr/bin/chaos-operator
+##COPY ./kured /usr/bin/kured
+
+##CMD ["/go/src/chaos-operator/chaos-operator"]
+CMD ["/usr/bin/chaos-operator"]
