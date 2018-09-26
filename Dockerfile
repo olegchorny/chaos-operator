@@ -16,7 +16,7 @@ RUN go get gopkg.in/robfig/cron.v2
 ##RUN go get k8s.io/kubernetes/vendor/k8s.io/api/core/v1
 RUN go get github.com/olegchorny/chaos-operator/pkg/apis/chaos/v1
 RUN go get github.com/olegchorny/chaos-operator/pkg/client/clientset/versioned
-RUN go get github.com/olegchorny/chaos-operator/pkg/client/informers/externalversions/chaos/v1
+##RUN go get github.com/olegchorny/chaos-operator/pkg/client/informers/externalversions/chaos/v1
 
 WORKDIR /go/src/chaos-operator
 RUN go build .

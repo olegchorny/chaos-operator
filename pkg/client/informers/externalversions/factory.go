@@ -19,12 +19,13 @@ limitations under the License.
 package externalversions
 
 import (
-	versioned "github.com/olegchorny/chaos-operator/pkg/client/clientset/versioned"
-	chaos "github.com/olegchorny/chaos-operatorr/pkg/client/informers/externalversions/chaos"
-	internalinterfaces "github.com/olegchorny/chaos-operator/pkg/client/informers/externalversions/internalinterfaces"
 	reflect "reflect"
 	sync "sync"
 	time "time"
+
+	versioned "github.com/olegchorny/chaos-operator/pkg/client/clientset/versioned"
+	chaos "github.com/olegchorny/chaos-operator/pkg/client/informers/externalversions/chaos"
+	internalinterfaces "github.com/olegchorny/chaos-operator/pkg/client/informers/externalversions/internalinterfaces"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"

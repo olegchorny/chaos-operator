@@ -20,7 +20,7 @@ package verf
 
 import (
 	v1 "github.com/olegchorny/chaos-operator/pkg/client/informers/externalversions/chaos/v1"
-	internalinterfaces "operator/pkg/client/informers/externalversions/internalinterfaces"
+	internalinterfaces "github.com/olegchorny/chaos-operator/pkg/client/informers/externalversions/internalinterfaces"
 )
 
 // Interface provides access to each of this group's versions.
